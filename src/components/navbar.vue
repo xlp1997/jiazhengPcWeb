@@ -1,18 +1,20 @@
 <template>
-  <div class="contain">
-    <div class="navbar-box">
-      <div class="navbar-left">
-        <a href="/">
-          <img width="88px" height="33px" src="../assets/logo.png" alt="上户" />
-        </a>
-      </div>
-      <div class="navbar-right">
-        <ul class="ul-box">
-          <li @click="itemClick(item,index)" v-for="(item,index) in tabs" :key="index">
-            {{item.txet}}
-            <div class="nav-bot" v-if="tabState==index"></div>
-          </li>
-        </ul>
+  <div>
+    <div class="contain">
+      <div class="navbar-box">
+        <div class="navbar-left">
+          <a href="/">
+            <img width="88px" height="33px" src="../assets/logo.png" alt="上户" />
+          </a>
+        </div>
+        <div class="navbar-right">
+          <ul class="ul-box">
+            <li @click="itemClick(item,index)" v-for="(item,index) in tabs" :key="index">
+              {{item.txet}}
+              <div class="nav-bot" v-if="tabState==index"></div>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>
@@ -84,33 +86,42 @@ export default {
 };
 </script>
  <style lang="less" scoped>
-.navbar-box {
-  height: 74px;
-  line-height: 74px;
+.contain {
+  width: 100%;
   position: fixed;
   top: 0;
   z-index: 1000;
+  height: 74px;
+  box-shadow: 0px 3px 11px 0px rgba(240, 240, 240, 0.68);
+}
+.navbar-box {
+  margin: 0 auto;
+  height: 74px;
+  line-height: 74px;
+
   width: 1200px;
   background: rgba(255, 255, 255, 1);
-  box-shadow: 0px 3px 11px 0px rgba(240, 240, 240, 0.68);
   .navbar-left {
     width: 50%;
     float: left;
     text-align: left;
     img {
       vertical-align: middle;
-      margin-left: 120px;
-    }
+     }
   }
   .navbar-right {
     width: 50%;
     float: left;
+    text-align: right;
   }
 }
 .ul-box {
   margin: 0 0 0 60px;
   padding: 0;
   font-size: 16px;
+  display: inline-block;
+  height: 74px;
+
   li {
     list-style: none;
     float: left;

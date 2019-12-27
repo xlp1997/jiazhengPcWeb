@@ -1,18 +1,19 @@
 <template>
   <div class="yemian paddTop">
     <div class="contain contain-page">
-      <div class="tabs">
-        <div
-          @click="itemClick(item,index)"
-          v-for="(item,index) in tabs"
-          :key="index"
-          class="tabs-item"
-        >
-          <div class="tabs-text">{{item.name}}</div>
-          <div class="tabbar" v-if="tabState==index"></div>
+      <div class="tabs-box">
+        <div class="tabs">
+          <div
+            @click="itemClick(item,index)"
+            v-for="(item,index) in tabs"
+            :key="index"
+            class="tabs-item"
+          >
+            <div class="tabs-text">{{item.name}}</div>
+            <div class="tabbar" v-if="tabState==index"></div>
+          </div>
         </div>
       </div>
-
       <keep-alive>
         <component
           @itemAuntClick="itemAuntClick"
@@ -57,11 +58,11 @@ import job from "@/components/job";
 export default {
   components: {
     aunt
-  },// 这个是配置head信息，vue-meta-info插进提供的功能
+  }, // 这个是配置head信息，vue-meta-info插进提供的功能
   metaInfo: {
-    title: "上户", // set a title
+    title: "上户-家政好工作，高薪上户快", // set a title
     meta: [
-        {
+      {
         // set meta
         name: "keyWords",
         content:
@@ -137,13 +138,18 @@ export default {
     z-index: 1;
   }
 }
+.tabs-box {
+  padding: 24px 0;
+  position: fixed;
+  top: 70px;
+  z-index: 1;
+  background: #f9f9f9;
+}
 .tabs {
   width: 1200px;
-  margin: 24px 0;
+
   height: 56px;
-  position: fixed;
-  top: 80px;
-  z-index: 1;
+
   background: rgba(255, 255, 255, 1);
   .tabs-item {
     float: left;

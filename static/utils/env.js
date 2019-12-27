@@ -9,6 +9,7 @@ const config = {
     orderList: baseUrl + '/jz-pc-web/orderController/findAllInfo.do',//订单列表接口
     auntList: baseUrl + '/jz-pc-web/personalUserController/findAllInfo.do',//阿姨列表接口
     newsList: baseUrl + '/jz-pc-web/webInformationInfoController/findAllInfo.do',//咨询列表接口
+    newsListDetail: baseUrl + '/jz-pc-web/webInformationInfoController/findDetailsInfo.do',//咨询列表接口
 
     
 }

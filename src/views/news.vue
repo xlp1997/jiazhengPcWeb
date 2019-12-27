@@ -1,13 +1,27 @@
 <template>
   <div class="contain paddTop">
+    <div style="width:10px;height:30px;"></div>
     <div v-for="(item,index) in rows" :key="index" class="list">
-      <p>{{item.establishTime|format('yyyy-MM-dd')}}</p>
-      <h2>{{item.informationTitle}}</h2>
-      <div v-for="(item,index) in item.contentList" :key="index" class="list-bottom">
-        <div v-if="item.photoList.length>0" class="wapper">
-          <img :src="item.photoList[0].photoUrl" alt="资讯" />
+      <div class="timee">
+        <div class="timee-dd">{{item.establishTime|format('dd')}}</div>
+        <div class="timee-mm">{{item.establishTime|format('yyyy/MM')}}</div>
+      </div>
+
+      <div class="right-list">
+        <div class="quan1"></div>
+        <div class="quan2"></div>
+
+        <h2>
+          <div class="tag-box" v-if="item.informationType==1">官方动态</div>
+          <div class="tag-box" v-if="item.informationType==2">产品更新</div>
+          <span @click="itemClick(item,index)" class="sapn-h2">{{item.informationTitle}}</span>
+        </h2>
+        <div @click="itemClick(item,index)" v-for="(item2,index2) in item.contentList" :key="index2" class="list-bottom">
+          <div v-if="item2.photoList.length>0" class="wapper">
+            <img :src="item2.photoList[0].photoUrl" alt="资讯" />
+          </div>
+          <div class="content">{{item2.fragmentTextDescribe}}</div>
         </div>
-        <div class="content">{{item.fragmentTextDescribe}}</div>
       </div>
       <div style="clear:both;"></div>
     </div>
@@ -31,7 +45,7 @@ import env from "../../static/utils/env";
 export default {
   components: {}, // 这个是配置head信息，vue-meta-info插进提供的功能
   metaInfo: {
-    title: "上户", // set a title
+    title: "上户-家政好工作，高薪上户快", // set a title
     meta: [
       {
         // set meta
@@ -151,6 +165,32 @@ export default {
               if (res.data.rows && res.data.rows.length > 0) {
                 res.data.rows.forEach((item, index) => {
                   if (item.isHide == 1) {
+                    var arr = [];
+                    var text = {};
+                    if (item.contentList.length > 0) {
+                      // text.fragmentTextDescribe =
+                      //   item.contentList[0].fragmentTextDescribe;
+
+                      // for (var i = 0; i < item.contentList.length; i++) {
+                      //   if (item.contentList[i].photoList.length > 0) {
+                      //     for (
+                      //       var j = 0;
+                      //       j < item.contentList[i].photoList.length;
+                      //       j++
+                      //     ) {
+                      //       if (item.contentList[i].photoList[j].photoUrl) {
+                      //         text.photoUrl =
+                      //           item.contentList[i].photoList[j].photoUrl;
+                      //         break;
+                      //       }
+                      //     }
+                      //   }
+                      // }
+                      arr.push(item.contentList[0]);
+                      // console.log(arr);
+                      item.contentList = arr;
+                      // console.log(item.contentList);
+                    }
                     _this.rows.push(item);
                   }
                 });
@@ -172,6 +212,9 @@ export default {
           });
         }
       });
+    },
+    itemClick(item, index) {
+      this.$router.push("/newsDetail/" + item.webInformationId);
     }
   },
   mounted() {
@@ -206,8 +249,17 @@ export default {
     transform: rotate(360deg);
   }
 }
+.right-list {
+  cursor: pointer;
+  float: left;
+  padding: 0px 0 50px 70px;
+  border-left: 1px solid #e5e5e5;
+  position: relative;
+}
+.right-list:hover {
+  // background: #e5e5e5;
+}
 .list {
-  margin-top: 30px;
   p {
     text-align: left;
     font-size: 14px;
@@ -215,6 +267,7 @@ export default {
     color: rgba(144, 144, 144, 1);
     line-height: 20px;
   }
+
   h2 {
     text-align: left;
     font-size: 18px;
@@ -224,6 +277,9 @@ export default {
     margin: 6px 0 12px 0;
     font-weight: bold;
   }
+  .sapn-h2:hover {
+    text-decoration: underline;
+  }
   .list-bottom {
     display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
     display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
@@ -231,7 +287,7 @@ export default {
     display: -webkit-flex; /* NEW - Chrome */
     display: flex;
     align-items: center;
-    width: 684px;
+    width: 866px;
     height: 150px;
     background: rgba(250, 250, 250, 1);
     padding: 10px;
@@ -247,7 +303,7 @@ export default {
       }
     }
     .content {
-      width: 500px;
+      width: 694px;
       float: left;
       font-size: 12px;
       font-weight: 400;
@@ -259,6 +315,48 @@ export default {
       -webkit-line-clamp: 5;
       overflow: hidden;
     }
+  }
+  .list-bottom:hover .content {
+    text-decoration: underline;
+  }
+}
+.tag-box {
+  background: rgba(0, 160, 90, 1);
+  border-radius: 4px;
+  display: inline-block;
+  padding: 4px 12px;
+  color: #ffffff;
+  margin-right: 17px;
+}
+.quan1 {
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  left: -6.5px;
+  top: 10px;
+  position: absolute;
+  background: rgba(229, 229, 229, 1);
+}
+.quan2 {
+  border-radius: 50%;
+  left: -3.5px;
+  top: 13px;
+  position: absolute;
+  width: 7px;
+  height: 7px;
+  background: rgba(0, 160, 90, 1);
+}
+
+.timee {
+  float: left;
+  width: 190px;
+  color: rgba(42, 42, 42, 1);
+  font-weight: bold;
+  .timee-dd {
+    font-size: 24px;
+  }
+  .timee-mm {
+    font-size: 18px;
   }
 }
 </style>

@@ -3,19 +3,20 @@ import Router from 'vue-router'
 Vue.use(Router)
 export default new Router({
   mode: 'history',
-   routes: [
+  routes: [
     {
       path: '/',
       name: 'index',
       component: () => import('@/views/index'),
       meta: {
-        foot: true, navbar: 0
+        foot: true, navbar: 0,keepAlive:true
       }
     }, {
       path: '/job',
       name: 'job',
       component: () => import('@/views/job'),
       meta: {
+        keepAlive: true,
         navbar: 2
       }
     }, {
@@ -23,6 +24,7 @@ export default new Router({
       name: 'news',
       component: () => import('@/views/news'),
       meta: {
+        keepAlive: true,
         navbar: 1
       }
     }, {
@@ -30,8 +32,16 @@ export default new Router({
       name: 'about',
       component: () => import('@/views/about'),
       meta: {
+        keepAlive: true,
         foot: true,
         navbar: 3
+      }
+    }, {
+      path: '/newsDetail/:id',
+      name: 'newsDetail',
+      component: () => import('@/views/newsDetail'),
+      meta: {
+         navbar: 1
       }
     }
 

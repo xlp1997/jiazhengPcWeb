@@ -1,5 +1,8 @@
 <template>
-  <div class="contain paddTop">
+  <div class="paddTop">
+    <div class="tu-box-all">
+
+   
     <div class="tu-box">
       <swiper :options="swiperList.length>1?swiperOption:''" ref="mySwiper">
         <!-- slides -->
@@ -33,128 +36,132 @@
           slot="button-next"
         ></div>
       </swiper>
-    </div>
-    <h2>家政公司的好帮手</h2>
-    <h4>诚信的家政人员从业平台</h4>
+    </div> </div>
+    <div class="contain">
+      <h2>家政公司的好帮手</h2>
+      <h4>让订单配人不再困难，生意更好做</h4>
 
-    <div class="content-1">
-      <div class="content-1-left">
-        <img src="../assets/company.png" alt />
-      </div>
-      <div class="content-1-right">
-        <div class="content-1-right-box" v-for="(item,index) in datalist2" :key="index">
-          <div class="img-box">
-            <img width="24px" height="20px" :src="item.img" alt />
-          </div>
-          <div>{{item.text}}</div>
+      <div class="content-1">
+        <div class="content-1-left">
+          <img src="../assets/company.png" alt />
         </div>
-      </div>
-    </div>
-    <div style="clear:both;"></div>
-    <h2>已有3000+家政公司在线发布招聘信息</h2>
-    <h4>家政行业垂直招聘始创者</h4>
-    <div class="card-box">
-      <ul>
-        <li
-          :style="{marginRight:(cardData.length-1)==index?'':'40px'}"
-          v-for="(item,index) in cardData"
-          :key="index"
-          class="card-list"
-        >
-          <div class="text">{{item.text}}</div>
-          <div class="wrapper">
-            <img :src="item.img" alt="家政公司" />
-          </div>
-
-          <div class="name">{{item.name}}</div>
-        </li>
-      </ul>
-    </div>
-    <div style="clear:both;"></div>
-
-    <h2>家政人员求职好帮手</h2>
-    <h4>让订单配人不再困难，生意更好做</h4>
-    <div class="content-2">
-      <div class="img-box">
-        <img src="../assets/aunt.png" alt="阿姨" />
-      </div>
-      <div class="content-right">
-        <div class="top">
-          <div class="card">
-            <div class="wrapper">
-              <img src="../assets/yuan1.png" alt />
+        <div class="content-1-right">
+          <div class="content-1-right-box" v-for="(item,index) in datalist2" :key="index">
+            <div class="img-box">
+              <img width="24px" height="20px" :src="item.img" alt />
             </div>
-            <div class="text">海量工作机会，等你来挑选</div>
-          </div>
-          <div class="card" style="margin-left:50px;">
-            <div class="wrapper">
-              <img src="../assets/yuan2.png" alt />
-            </div>
-            <div class="text">介绍姐妹注册还有红包哟</div>
-          </div>
-        </div>
-        <div style="clear:both;"></div>
-        <div class="top" style="margin-top:50px;">
-          <div class="card">
-            <div class="wrapper">
-              <img src="../assets/yuan3.png" alt />
-            </div>
-            <div class="text">在线管理简历，方便快捷</div>
-          </div>
-          <div class="card" style="margin-left:50px;">
-            <div class="wrapper">
-              <img src="../assets/yuan4.png" alt />
-            </div>
-            <div class="text">对接专职培训，先人一步</div>
+            <div>{{item.text}}</div>
           </div>
         </div>
       </div>
-    </div>
-    <div style="clear:both;"></div>
+      <div style="clear:both;"></div>
+      <h2>已有3000+家政公司在线发布招聘信息</h2>
+      <h4>家政行业垂直招聘始创者</h4>
+      <div class="card-box">
+        <ul>
+          <li
+            :style="{marginRight:(cardData.length-1)==index?'':'40px'}"
+            v-for="(item,index) in cardData"
+            :key="index"
+            class="card-list"
+          >
+            <div class="text">{{item.text}}</div>
+            <div v-if="index==2" class="wrapper" style="width:120px;">
+              <img :src="item.img" alt="家政公司" />
+            </div>
+            <div v-else class="wrapper">
+              <img :src="item.img" alt="家政公司" />
+            </div>
+            <div class="name">{{item.name}}</div>
+          </li>
+        </ul>
+      </div>
+      <div style="clear:both;"></div>
 
-    <h2>已有100000+家政阿姨正在使用上户无忧</h2>
-    <h4>家政好工作，高薪上户快</h4>
-
-    <div class="card-box">
-      <ul>
-        <li
-          style="margin-bottom: 40px;"
-          :style="{marginRight:(cardData.length-1)==index?'':'40px'}"
-          v-for="(item,index) in carsAuntList"
-          :key="index"
-          class="card-list"
-        >
-          <div class="text">{{item.text}}</div>
-          <div class="wrapper">
-            <img :src="item.img" alt="家政阿姨" />
+      <h2>家政人员求职好帮手</h2>
+      <h4>让订单配人不再困难，生意更好做</h4>
+      <div class="content-2">
+        <div class="img-box">
+          <img src="../assets/aunt.png" alt="阿姨" />
+        </div>
+        <div class="content-right">
+          <div class="top">
+            <div class="card">
+              <div class="wrapper">
+                <img src="../assets/yuan1.png" alt />
+              </div>
+              <div class="text">海量工作机会，等你来挑选</div>
+            </div>
+            <div class="card" style="margin-left:50px;">
+              <div class="wrapper">
+                <img src="../assets/yuan2.png" alt />
+              </div>
+              <div class="text">介绍姐妹注册还有红包哟</div>
+            </div>
           </div>
+          <div style="clear:both;"></div>
+          <div class="top" style="margin-top:50px;">
+            <div class="card">
+              <div class="wrapper">
+                <img src="../assets/yuan3.png" alt />
+              </div>
+              <div class="text">在线管理简历，方便快捷</div>
+            </div>
+            <div class="card" style="margin-left:50px;">
+              <div class="wrapper">
+                <img src="../assets/yuan4.png" alt />
+              </div>
+              <div class="text">对接专职培训，先人一步</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="clear:both;"></div>
 
-          <div class="name">{{item.name}}</div>
-        </li>
-      </ul>
-    </div>
-    <div style=" clear: both;"></div>
-    <h2>合作伙伴</h2>
-    <h4>与您携手，共创家政美好明天</h4>
-    <div class="tu-box2">
-      <swiper :options="swiperOption2" ref="mySwiper2" @someSwiperEvent="callback2">
-        <!-- slides -->
-        <swiper-slide
-          style="background:#ffffff;overflow: hidden;cursor: pointer;"
-          class="swiper-item"
-          v-for="(item,index) of hezuoList"
-          :key="index"
-        >
-          <img
-            style="object-fit: contain;"
-            width="100%"
-            height="100%"
-            class="hezuo-img"
-            :src="item"
-            alt="合作伙伴"
-          />
-        </swiper-slide>
-      </swiper>
+      <h2>已有100000+家政阿姨正在使用上户无忧</h2>
+      <h4>家政好工作，高薪上户快</h4>
+
+      <div class="card-box">
+        <ul>
+          <li
+            style="margin-bottom: 40px;"
+            :style="{marginRight:(cardData.length-1)==index?'':'40px'}"
+            v-for="(item,index) in carsAuntList"
+            :key="index"
+            class="card-list"
+          >
+            <div class="text">{{item.text}}</div>
+            <div class="wrapper">
+              <img :src="item.img" alt="家政阿姨" />
+            </div>
+
+            <div class="name">{{item.name}}</div>
+          </li>
+        </ul>
+      </div>
+      <div style=" clear: both;"></div>
+      <h2>合作伙伴</h2>
+      <h4>与您携手，共创家政美好明天</h4>
+      <div class="tu-box2">
+        <swiper :options="swiperOption2" ref="mySwiper2" @someSwiperEvent="callback2">
+          <!-- slides -->
+          <swiper-slide
+            style="background:#ffffff;overflow: hidden;cursor: pointer;"
+            class="swiper-item"
+            v-for="(item,index) of hezuoList"
+            :key="index"
+          >
+            <img
+              style="object-fit: contain;"
+              width="100%"
+              height="100%"
+              class="hezuo-img"
+              :src="item"
+              alt="合作伙伴"
+            />
+          </swiper-slide>
+        </swiper>
+      </div>
     </div>
     <div style=" clear: both;"></div>
   </div>
@@ -173,7 +180,7 @@ export default {
   },
   // 这个是配置head信息，vue-meta-info插进提供的功能
   metaInfo: {
-    title: "上户", // set a title
+    title: "上户-家政好工作，高薪上户快", // set a title
     meta: [
       {
         // set meta
@@ -245,18 +252,18 @@ export default {
       swiperList: [
         {
           id: "001",
-          imgUrl: require("../assets/index-banna1.png")
+          imgUrl: require("../assets/index-banan1.png")
         }
       ],
       staticData: "这是data里的静态数据",
       forComputed: 10,
       list: [],
       hezuoList: [
-        require("../assets/com-1.png"),
+        require("../assets/com-1.jpg"),
         require("../assets/com-5.png"),
         require("../assets/com-2.png"),
         require("../assets/com-6.png"),
-        require("../assets/com-3.jpg"),
+        require("../assets/com-3.png"),
         require("../assets/com-9.jpg"),
         require("../assets/com-8.png"),
         require("../assets/com-7.png"),
@@ -290,7 +297,7 @@ export default {
       ],
       cardData: [
         {
-          img: require("../assets/com-1.png"),
+          img: require("../assets/com-1.jpg"),
           text:
             "“平台帮我解决了阿姨资源不足的困难，发布需求后，马上有很多阿姨报名，再也不用像之前一样天天发朋友圈和微信群了。”",
           name: "哈哈福家政"
@@ -402,11 +409,13 @@ h4 {
 .swiper-button-prev {
   background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M0%2C22L22%2C0l2.1%2C2.1L4.2%2C22l19.9%2C19.9L22%2C44L0%2C22L0%2C22L0%2C22z'%20fill%3D'%2300a05a'%2F%3E%3C%2Fsvg%3E");
 }
-
-.tu-box {
-  margin-top: 30px;
+.tu-box-all {
+    width: 100%;
+background: #F9F9F9;
+}
+.tu-box {margin: 0 auto;
   width: 1200px;
-  height: 360px;
+  height: 390px;
   text-align: right;
 }
 .content-1 {
@@ -481,9 +490,9 @@ h4 {
       overflow: hidden;
     }
     .wrapper {
-      height: 80px;
-      width: 80px;
-      border-radius: 50%;
+      height: 90px;
+      width: 90px;
+      // border-radius: 50%;
       overflow: hidden;
       margin: 10px auto 0 auto;
       img {

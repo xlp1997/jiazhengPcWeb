@@ -2,7 +2,10 @@
   <div id="app">
     <navbar :tabState="$route.meta.navbar"></navbar>
     <keep-alive>
-    <router-view /></keep-alive>
+      <router-view v-if="$route.meta.keepAlive" />
+    </keep-alive>
+    <router-view v-if="!$route.meta.keepAlive" />
+
     <foot v-if="$route.meta.foot"></foot>
   </div>
 </template>
